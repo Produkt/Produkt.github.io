@@ -1,0 +1,175 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es-ES" lang="es-ES" xmlns:v="urn:schemas-microsoft-com:vml">
+    <head>
+        <title>Produkt</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <style type="text/css">
+            body{
+                background:#000;
+                font-family: "Helvetica Neue";
+            }
+            .container {
+                margin: 0 auto;
+                width: 1072px;
+                height: 90%;
+            }
+            .row{
+                float: left;
+                width: 100%;
+            }
+            .table_block{
+                display: table;
+                width: 100%;
+                height: 100%;
+            }
+            .table_cell{
+                display: table-cell;
+                vertical-align: bottom;
+            }
+            .big_text{
+                font-size: 82px;
+                font-weight: bold;
+                line-height: 120%;
+                text-align: left;
+                margin: 0 0 0 -4px;
+            }
+            .small_text{
+                font-size: 16px;
+                font-weight: bold;
+                line-height: 120%;
+                text-align: left;
+            }
+            .white{
+                color: rgb(255,255,255);
+            }
+            .grey{
+                color: rgb(255,255,255);
+                opacity: 0.4;
+            }
+            .red{
+                color: rgb(249,90,44);
+            }
+            .yellow{
+                color:rgb(223,191,63);
+            }
+            .turquoise{
+                color:rgb(69,187,145);
+            }
+            .big_title_block{
+                position: relative;
+                float: left;
+                width: 100%;
+                height: 98px;
+            }
+            .big_title{
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .footer{
+                margin: 37px 0 0 0;
+            }
+            .footer_business{
+                float: left;
+            }
+            .footer_description{
+                float: left;
+                margin-left: 4px;
+            }
+            .footer_email{
+                float: right;
+            }
+            
+            @media (max-width: 1112px) {
+                .container{
+                    width: 90%;
+                }
+            }
+            @media (max-width: 880px) {
+                .footer_business {
+                    margin: 0 0 5px 0;
+                }
+                .footer_email {
+                    float: left;
+                    width: 100%;
+                }
+            }
+            @media (max-width: 660px) {
+                .footer_business {
+                    width: 100%;
+                    margin: 0 0 5px 0;
+                }
+                .footer_description {
+                    width: 100%;
+                    margin: 0 0 5px 0;
+                }
+            }
+            @media (max-width: 560px) {
+                .big_title_block{
+                    height: 84px;
+                }
+                .big_text {
+                    font-size: 70px;
+                }
+            }
+            @media (max-width: 480px) {
+                .big_title_block{
+                    height: 66px;
+                }
+                .big_text {
+                    font-size: 55px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="table_block">
+                <div class="table_cell">
+                    <div class="row">
+                        <div class="big_title_block">
+                            <div id="iOS_title" class="big_text big_title red">iOS.</div>
+                            <div id="iPhone_title" class="big_text big_title yellow" style="display:none;">iPhone.</div>
+                            <div id="iPad_title" class="big_text big_title turquoise" style="display:none;">iPad.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="big_text white">Nothing less.</div>
+                    </div>
+                    <div class="row footer">
+                        <div class="footer_business white">Produkt.</div>
+                        <div class="footer_description grey">Professional iOS apps development for those who care about their product.</div>
+                        <div class="footer_email white">hello@produktstudio.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var titles = ["iOS", "iPhone", "iPad"];
+            var currentTitle = "iOS";
+            function runTitleCarousel(){
+                setInterval(function() {
+                    var newTitle = "";
+                    for(var i = 0; i < titles.length; i++){
+                        if(currentTitle == titles[i]){
+                            if(i + 1 >= titles.length){
+                                newTitle = titles[0];
+                            }else{
+                                newTitle = titles[i + 1];
+                            }
+                        }
+                    }
+                    
+                    $('#'+currentTitle+"_title").fadeOut(200, function(){
+                        $('#'+newTitle+"_title").fadeIn(200, function(){
+                            currentTitle = newTitle;
+                        });
+                    });
+                }, 4000);
+            }
+            
+            $(window).on("load", function(){
+                runTitleCarousel();
+            });
+        </script>
+    </body>
+</html>
